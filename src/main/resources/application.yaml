@@ -1,0 +1,31 @@
+
+spring:
+  application:
+    name: stream
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  datasource:
+    url: jdbc:postgresql://localhost:6666/stream?currentSchema=videos
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+    jpa:
+      open-in-view: disable
+      show-sql: true
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+
+
+
+minio:
+  service: users
+  endpoint: http://localhost:8000
+  accessKey: 32t2cwCIdputIRatOn8I
+  secretKey: nsSM4jKBFPWDbqFrdBrLcFOoMitQvQOvfCDFTILB
+server:
+  port: 1010
