@@ -30,7 +30,7 @@ public class VideoServiceImpl implements VideoService {
                 .title(videoMetaData.videoTitle())
                 .description(videoMetaData.videoDescription())
                 .build();
-//        videoRepository.save(video);
+        videoRepository.save(video);
     }
 
     @Override

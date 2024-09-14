@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 
 @ToString
-@Table(name = "videos")
+@Table(name = "user_videos")
 @Entity
 @Builder
 @NoArgsConstructor
