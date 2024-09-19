@@ -1,6 +1,7 @@
 package com.project.stream.rest;
 
 import com.project.stream.config.MinioManager;
+import com.project.stream.model.Video;
 import com.project.stream.rest.vm.request.VideoMetaDataVM;
 import com.project.stream.rest.vm.request.VideoRequestVM;
 import com.project.stream.service.VideoService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Arrays;
+import java.util.List;
 
 @RestController
 @RequestMapping("/videos")
@@ -49,5 +51,10 @@ public class VideoResource {
         }catch (Exception e) {
             throw new IllegalStateException(e);
         }
+    }
+
+   @GetMapping(value = {"/all","/videos"})
+   public ResponseEntity<List<Video>> getAllVideos(){
+        return ResponseEntity.ok().body(videoService.getAllVideos());
     }
 }
