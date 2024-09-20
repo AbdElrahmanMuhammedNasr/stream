@@ -1,7 +1,24 @@
 
 spring:
   application:
-    name: stream
+    name: stream-service
+  config:
+    import: "consul:"
+    enabled: true # Enable config server from Consul
+    fail-fast: true
+    profile-separator: '-'
+  cloud:
+    consul:
+      host: localhost # If Consul is running locally
+      port: 8500
+      discovery:
+        enabled: true
+        register: true # Register the service with Consul
+        prefer-ip-address: true # Prefer IP address over hostname
+        health-check-path: /actuator/health
+        health-check-interval: 30s
+
+
   servlet:
     multipart:
       max-file-size: 100MB
@@ -27,6 +44,14 @@ spring:
 #    org:
 #      hibernate: DEBUG
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
 
 minio:
   service: users

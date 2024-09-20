@@ -21,3 +21,22 @@ services:
       KAFKA_CREATE_TOPICS: "upload:1:1" # Automatically creates the "upload" topic with 1 partition and replication factor 1
     depends_on:
       - zookeeper
+
+
+#
+
+  consul-node1:
+    image: bitnami/consul
+#    environment:
+#      - CONSUL_BOOTSTRAP_EXPECT=1
+#      - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
+#      - CONSUL_DISABLE_KEYRING_FILE=true
+#      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
+    ports:
+      - '8300:8300'
+      - '8301:8301'
+      - '8301:8301/udp'
+      - '8500:8500'
+      - '8600:8600'
+      - '8600:8600/udp'
+
